@@ -8,6 +8,8 @@ import urllib2
 import urllib
 import json
 
+from dbpedia_sparql_endpoint import DBpediaSPARQLEndpoint
+
 SPOTLIGHT_URL = 'http://spotlight.sztaki.hu:2222/rest/annotate'
 SPOTLIGHT_CONFIDENCE = 0.5
 
@@ -18,16 +20,30 @@ def index(request):
 		annotator = DBpediaAnnotator();
 		annotations = annotator.annotate_text(text)
 		
-		obj = []
+		enriched_annotations = []
+
+		sparql_endpoint = DBpediaSPARQLEndpoint()
 		
 		if 'Resources' in annotations: 
 			for resource in annotations['Resources']:
-				obj.append(resource['@URI'])
-			return render(request, 'index.html', {'annotations': obj, 'text': text})
+				resource_attribute_values = sparql_endpoint.query_attributes(resource['@URI'], ['owl:Thing'] + resource['@types'].split(','))
+
+				for name, value in resource_attribute_values.items():
+					resource_attribute_values[name] = ", ".join(value)
+
+				resource_annotation = {
+					'URI': resource['@URI'], 
+					'surfaceForm':resource['@surfaceForm'], 
+					'offset':resource['@offset'], 
+					'attributeValues':resource_attribute_values
+				}
+
+				enriched_annotations.append(resource_annotation)
+			return render(request, 'index.html', {'annotations': enriched_annotations, 'text': text})
 		else:
 			return render(request, 'index.html', {'annotations': [], 'text': text})
 			
-	return render(request, 'index.html', {'annotations': [""]})
+	return render(request, 'index.html', {'annotations': []})
 
 class DBpediaAnnotator(object):
 
@@ -41,4 +57,3 @@ class DBpediaAnnotator(object):
 		annotations = json.load(response)
 
 		return annotations
-    

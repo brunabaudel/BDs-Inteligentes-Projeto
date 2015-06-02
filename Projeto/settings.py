@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Projeto',
+    'rdflib'
 )
 
 MIDDLEWARE_CLASSES = (

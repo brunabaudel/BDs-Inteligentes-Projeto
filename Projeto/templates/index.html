@@ -19,7 +19,15 @@
          </form>
          {% if annotations %}
          {% for resource in annotations %}
-         	 <a href="{{ resource }}"/>{{ resource }}</a> <br />
+            <br />
+            <b>Resource {{ forloop.counter }}</b> <br />
+            <b>Surface form: </b> {{ resource.surfaceForm }} <br />
+            <b>Offset: </b> {{ resource.offset }} <br />
+            <b>Attributes: </b> <br />
+            {% for name, value in resource.attributeValues.items %}
+               <ins>{{ name.title }}</ins>: {{ value }} <br />
+            {% endfor %}
+            <br />
          {% endfor %}         
          {% else %}
          		 No DBpedia resources.
