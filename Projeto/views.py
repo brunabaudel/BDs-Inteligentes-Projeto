@@ -15,45 +15,46 @@ SPOTLIGHT_CONFIDENCE = 0.5
 
 def index(request):
 
-	if request.method == 'POST':
-		text = request.POST['text']
-		annotator = DBpediaAnnotator();
-		annotations = annotator.annotate_text(text)
-		
-		enriched_annotations = []
+    if request.method == 'POST':
+        text = request.POST['text']
+        annotator = DBpediaAnnotator();
+        annotations = annotator.annotate_text(text)
 
-		sparql_endpoint = DBpediaSPARQLEndpoint()
-		
-		if 'Resources' in annotations: 
-			for resource in annotations['Resources']:
-				resource_attribute_values = sparql_endpoint.query_attributes(resource['@URI'], ['owl:Thing'] + resource['@types'].split(','))
+        enriched_annotations = []
 
-				for name, value in resource_attribute_values.items():
-					resource_attribute_values[name] = ", ".join(value)
+        sparql_endpoint = DBpediaSPARQLEndpoint()
 
-				resource_annotation = {
-					'URI': resource['@URI'], 
-					'surfaceForm':resource['@surfaceForm'], 
-					'offset':resource['@offset'], 
-					'attributeValues':resource_attribute_values
-				}
+        if 'Resources' in annotations: 
+            for resource in annotations['Resources']:
+                resource_attribute_values = sparql_endpoint.query_attributes(resource['@URI'], ['owl:Thing'] + resource['@types'].split(','))
 
-				enriched_annotations.append(resource_annotation)
-			return render(request, 'index.html', {'annotations': enriched_annotations, 'text': text})
-		else:
-			return render(request, 'index.html', {'annotations': [], 'text': text})
-			
-	return render(request, 'index.html', {'annotations': []})
+                for name, value in resource_attribute_values.items():
+                    resource_attribute_values[name] = ", ".join(value)
+
+                resource_annotation = {
+                    'URI': resource['@URI'], 
+                    'surfaceForm':resource['@surfaceForm'], 
+                    'offset':resource['@offset'], 
+                    'attributeValues':resource_attribute_values
+                }
+
+                enriched_annotations.append(resource_annotation)
+
+            return render(request, 'index.html', {'annotations': enriched_annotations, 'text': text})
+        else:
+            return render(request, 'index.html', {'annotations': [], 'text': text})
+
+    return render(request, 'index.html', {'annotations': []})
 
 class DBpediaAnnotator(object):
 
-  def annotate_text(self, text):
-		
-		parameters = {'text':text, 'confidence':SPOTLIGHT_CONFIDENCE}
-		request = urllib2.Request(SPOTLIGHT_URL, data=urllib.urlencode(parameters))
-		request.add_header('Accept', 'application/json')
+    def annotate_text(self, text):
 
-		response = urllib2.urlopen(request)
-		annotations = json.load(response)
+        parameters = {'text':text, 'confidence':SPOTLIGHT_CONFIDENCE}
+        request = urllib2.Request(SPOTLIGHT_URL, data=urllib.urlencode(parameters))
+        request.add_header('Accept', 'application/json')
 
-		return annotations
+        response = urllib2.urlopen(request)
+        annotations = json.load(response)
+
+        return annotations
