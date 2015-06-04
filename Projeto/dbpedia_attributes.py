@@ -37,7 +37,7 @@ ATTRIBUTES = {
     'DBpedia:Country':[('gdp ppp total', ['dbpprop:gdpPpp']),
                        ('gdp ppp per capita', ['dbpprop:gdpPppPerCapita']),
                        ('gdp nominal total', ['dbpprop:gdpNominal']),
-                       ('gdo nominal per capita', ['dbpprop:gdpNominalPerCapita']),
+                       ('gdp nominal per capita', ['dbpprop:gdpNominalPerCapita']),
                        ('currency', ['dbpedia-owl:currency', 'rdfs:label']),
                        ('date format', ['dbpprop:dateFormat']),
                        ('drives on the', ['dbpprop:drivesOn'])],
