@@ -3,6 +3,12 @@ ATTRIBUTES = {
                  ('abstract', ['dbpedia-owl:abstract']),
                  ('website', ['foaf:homepage'])],
 
+    'DBpedia:Agent':[('title', ['dbpprop:title']),
+                    ('description', ['dc:description']),
+                    ('occupation', ['dbpprop:occupation']),
+                    ('profession', ['dbpprop:profession']),
+                    ('partner', ['dbpedia-owl:partner', 'rdfs:label'])],
+
     'DBpedia:Person':[('birth name', ['dbpprop:birthName']),
                       ('birth date', ['dbpedia-owl:birthDate']),
                       ('birth place', ['dbpedia-owl:birthPlace', 'rdfs:label']),
@@ -14,6 +20,10 @@ ATTRIBUTES = {
                       ('residence', ['dbpedia-owl:residence', 'rdfs:label']), 
                       ('alma mater', ['dbpedia-owl:almaMater', 'rdfs:label']),
                       ('religion', ['dbpedia-owl:religion', 'rdfs:label'])],
+
+    'DBpedia:Artist':[],
+
+    'DBpedia:Actor':[],
 
     'DBpedia:MusicalArtist':[('genre', ['dbpedia-owl:genre', 'rdfs:label']),
                              ('instrument', ['dbpprop:instrument'])],
@@ -43,6 +53,13 @@ ATTRIBUTES = {
                        ('drives on the', ['dbpprop:drivesOn'])],
 
     'DBpedia:Work':[('genre', ['dbpedia-owl:genre', 'rdfs:label'])],
+
+    'DBpedia:Film':[('starring', ['dbpedia-owl:starring', 'rdfs:label']),
+                    ('cinematography', ['dbpedia-owl:cinematography', 'rdfs:label']),
+                    ('director', ['dbpedia-owl:director', 'rdfs:label']),
+                    ('distributor', ['dbpedia-owl:distributor', 'rdfs:label']),
+                    ('editing', ['dbpedia-owl:editing', 'rdfs:label']),
+                    ('producer', ['dbpedia-owl:producer', 'rdfs:label'])],
 
     'DBpedia:TelevisionShow':[('composer', ['dbpedia-owl:composer', 'rdfs:label']),
                               ('country', ['dbpprop:country']),
