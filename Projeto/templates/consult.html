@@ -41,7 +41,7 @@
                             newText += "<strong>{{resource.surfaceForm}}</strong><br/>";
                             
                             {% for name, value in resource.attributeValues.items %}
-                               newText += "<ins>{{ name.title }}</ins>:  <br />";
+                               newText += "<ins>{{ name.title }}</ins>:  {{ value }}<br />"; //TIRAR O VALUE AQUI PRA FUNCIONAR
                             {% endfor %}
                             
                             newText += "</span></a>"
