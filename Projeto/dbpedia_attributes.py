@@ -65,7 +65,7 @@ ATTRIBUTES = {
     'DBpedia:Book':[('author', ['dbpedia-owl:author', 'rdfs:label']),
                     ('country', ['dbpprop:country']),
                     ('illustrator', ['dbpprop:illustrator']),
-                    ('publisher', ['dbpedia-owl:publisher', 'rdfs:label'])]
+                    ('publisher', ['dbpedia-owl:publisher', 'rdfs:label'])],
 
     'DBpedia:Film':[('creator', ['dbpprop:creator', 'rdfs:label']),
                     ('writer', ['dbpedia-owl:writer', 'rdfs:label']),
