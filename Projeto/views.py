@@ -10,10 +10,13 @@ import json
 
 from dbpedia_sparql_endpoint import DBpediaSPARQLEndpoint
 
-SPOTLIGHT_URL = 'http://spotlight.sztaki.hu:2222/rest/annotate'
+SPOTLIGHT_URL = 'http://spotlight.dbpedia.org/rest/annotate'
 SPOTLIGHT_CONFIDENCE = 0.5
 
 def index(request):
+    return render(request, 'index.html', {})
+
+def consult(request):
 
     if request.method == 'POST':
         text = request.POST['text']
@@ -40,11 +43,11 @@ def index(request):
 
                 enriched_annotations.append(resource_annotation)
 
-            return render(request, 'index.html', {'annotations': enriched_annotations, 'text': text})
+            return render(request, 'consult.html', {'annotations': enriched_annotations, 'text': text})
         else:
-            return render(request, 'index.html', {'annotations': [], 'text': text})
+            return render(request, 'consult.html', {'annotations': [], 'text': text})
 
-    return render(request, 'index.html', {'annotations': []})
+    return render(request, 'consult.html', {'annotations': []})
 
 class DBpediaAnnotator(object):
 
