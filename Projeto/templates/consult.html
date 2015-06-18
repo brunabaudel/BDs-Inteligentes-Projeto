@@ -8,15 +8,15 @@
         <link rel="stylesheet" href="static/css/style.css">
     </head>
     <body>
-        <div class="login-card" id="content">
+        <div class="login-card">
             
-            {{ text }}
+            <div id = "content">{{ text }}</div>
             
             <br><br>
             
-        </div>
+            <center>  <button onclick='goBack()' class="login login-submit">Go Back</button> </center>
 
-        <center>  <button onclick='goBack()'>Go Back</button> </center>
+        </div>
 
         <script>
         function goBack() {
@@ -26,7 +26,9 @@
         document.getElementById('content').innerHTML = prettifier('{{ text }}') ;//+ "<center>  <button onclick='goBack()'>Go Back</button> </center>";
         
         function prettifier(text) {
-        
+
+            text = text.replace('&#39;', '\'')
+
             var last = 0;
             var newText = "";
             

@@ -32,7 +32,7 @@ def consult(request):
                 resource_attribute_values = sparql_endpoint.query_attributes(resource['@URI'], ['owl:Thing'] + resource['@types'].split(','))
 
                 for name, value in resource_attribute_values.items():
-                    resource_attribute_values[name] = ", ".join(value).replace('\n', '')
+                    resource_attribute_values[name] = ", ".join(value).replace('\n', ' ')
 
                 resource_annotation = {
                     'URI': resource['@URI'], 
