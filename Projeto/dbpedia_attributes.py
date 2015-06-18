@@ -60,6 +60,16 @@ ATTRIBUTES = {
                        ('date format', ['dbpprop:dateFormat']),
                        ('drives on the', ['dbpprop:drivesOn'])],
 
+    'DBpedia:University':[('campus', ['dbpedia-owl:campus', 'rdfs:label']),
+                          ('motto', ['dbpprop:motto']),
+                          ('country', ['dbpprop:country']),
+                          ('state', ['dbpedia-owl:state', 'rdfs:label']),
+                          ('city', ['dbpedia-owl:city', 'rdfs:label']),
+                          ('faculty size', ['dbpedia-owl:facultySize']),
+                          ('number of students', ['dbpedia-owl:numberOfStudents']),
+                          ('official school colour', ['dbpedia-owl:officialSchoolColour']),
+                          ('president', ['dbpedia-owl:president', 'rdfs:label'])],
+
     'DBpedia:Work':[('genre', ['dbpedia-owl:genre', 'rdfs:label'])],
 
     'DBpedia:Book':[('author', ['dbpedia-owl:author', 'rdfs:label']),
