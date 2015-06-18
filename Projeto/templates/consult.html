@@ -28,6 +28,7 @@
         function prettifier(text) {
 
             text = text.replace(/&#39;/g, '\'')
+            text = text.replace(/&quot;/g, '\"')
 
             var last = 0;
             var newText = "";
