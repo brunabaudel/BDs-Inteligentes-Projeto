@@ -14,55 +14,62 @@
             
             <br><br>
             
-            <center>
-                <button onclick="goBack()">Go Back</button>
-            </center>
-
-            <script>
-            function goBack() {
-                window.history.back();
-            }
-            
-            document.getElementById('content').innerHTML = prettifier('{{ text }}');
-            
-            function prettifier(text) {
-            
-                var last = 0;
-                var newText = "";
-                
-                {% if annotations %}
-                {% for resource in annotations %} 
-                    
-                    for (var i = last; i < text.length; i++) {
-                        last = i;
-                        
-                        if (i == {{resource.offset}}) {
-                            newText += "<a href='#' class='tooltip'> {{resource.surfaceForm}} <span>";
-                            newText += "<strong>{{resource.surfaceForm}}</strong><br/>";
-                            
-                            {% for name, value in resource.attributeValues.items %}
-                               newText += "<ins>{{ name.title }}</ins>:  {{ value }}<br />"; //TIRAR O VALUE AQUI PRA FUNCIONAR
-                            {% endfor %}
-                            
-                            newText += "</span></a>"
-                            last += "{{resource.surfaceForm}}".length;
-                            break;
-                        }
-                        
-                        else newText += text[i];
-                    }
-                        
-                {% endfor %}
-                {% endif %}
-                        
-                return newText;
-                
-            }
-            
-            </script>
-        
-            
         </div>
+
+        <center>  <button onclick='goBack()'>Go Back</button> </center>
+
+        <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        document.getElementById('content').innerHTML = prettifier('{{ text }}') ;//+ "<center>  <button onclick='goBack()'>Go Back</button> </center>";
+        
+        function prettifier(text) {
+        
+            var last = 0;
+            var newText = "";
+            
+            {% if annotations %}
+            {% for resource in annotations %} 
+                
+                for (var i = last; i < text.length; i++) {
+                    last = i;
+                    
+                    if (i == {{resource.offset}}) {
+                        newText += "<a href='#' class='tooltip'> {{resource.surfaceForm}} <span>";
+                        newText += "<strong>{{resource.attributeValues.label}}</strong><br/>";
+                        
+                        var value;
+                        var limit;
+                        
+                        {% for name, value in resource.attributeValues.items %}
+                           value = "{{ value }}";
+                           limit = Math.min(value.length, 500);
+                          
+                           newText += "<ins>{{ name.title }}</ins>:" + value.substr(0,limit) + "<br />";
+                        {% endfor %}
+                        
+                        newText += "</span></a>"
+                        last += "{{resource.surfaceForm}}".length;
+                        break;
+                    }
+                    
+                    else newText += text[i];
+                }
+                    
+            {% endfor %}
+            {% endif %}
+            
+            for (var i = last; i < text.length; i++) {
+                newText += text[i];
+            }
+                    
+            return newText;
+            
+        }
+       </script>
+
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
         <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
         
