@@ -39,7 +39,7 @@
                 for (var i = last; i < text.length; i++) {
                     last = i;
                     
-                    if (i == {{resource.offset}}) {
+                    if (i == {{resource.offset}} && {{resource.attributeValues.items|length}} != 0) {
                         newText += "<a href='#' class='tooltip'> {{resource.surfaceForm}} <span>";
                         newText += "<h2>{{resource.attributeValues.label}}</h2><br/>";
                         
