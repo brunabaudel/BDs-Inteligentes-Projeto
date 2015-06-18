@@ -47,7 +47,8 @@
                            value = "{{ value }}";
                            limit = Math.min(value.length, 500);
                           
-                           newText += "<ins>{{ name.title }}</ins>:" + value.substr(0,limit) + "<br />";
+                           newText += "<ins>{{ name.title }}</ins>:" + value.substr(0,limit) + ((limit==500)?("<i> (...)</i>"):("")) + "<br />";
+                          
                         {% endfor %}
                         
                         newText += "</span></a>"
