@@ -14,6 +14,7 @@ ATTRIBUTES = {
                       ('birth place', ['dbpedia-owl:birthPlace', 'rdfs:label']),
                       ('death date', ['dbpedia-owl:deathDate']),
                       ('death place', ['dbpedia-owl:deathPlace', 'rdfs:label']),
+                      ('occupation', ['dbpprop:occupation']),
                       ('profession', ['dbpedia-owl:profession', 'rdfs:label']),
                       ('spouse', ['dbpprop:spouse']),
                       ('children', ['dbpprop:children']),
