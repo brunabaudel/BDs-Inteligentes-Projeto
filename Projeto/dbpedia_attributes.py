@@ -21,14 +21,22 @@ ATTRIBUTES = {
                       ('alma mater', ['dbpedia-owl:almaMater', 'rdfs:label']),
                       ('religion', ['dbpedia-owl:religion', 'rdfs:label'])],
 
-    'DBpedia:Artist':[],
-
-    'DBpedia:Actor':[],
-
     'DBpedia:MusicalArtist':[('genre', ['dbpedia-owl:genre', 'rdfs:label']),
                              ('instrument', ['dbpprop:instrument'])],
 
+    'DBpedia:Scientist':[('known for', ['dbpedia-owl:knownFor', 'rdfs:label']),
+                         ('field', ['dbpedia-owl:field', 'rdfs:label']),
+                         ('doctoral advisor', ['dbpprop:doctoralAdvisor', 'rdfs:label']),
+                         ('nationality', ['dbpprop:nationality']),
+                         ('work institutions', ['dbpprop:workInstitutions', 'rdfs:label'])],
+
     'DBpedia:OfficeHolder':[('party', ['dbpedia-owl:party', 'rdfs:label'])],
+
+    'DBpedia:Colour':[('frequency', ['dbpprop:frequency']),
+                      ('wave length', ['dbpprop:wavelength']),
+                      ('rgb coordinate red', ['dbpedia-owl:rgbCoordinateRed']),
+                      ('rgb coordinate green', ['dbpedia-owl:rgbCoordinateGreen']),
+                      ('rgb coordinate blue', ['dbpedia-owl:rgbCoordinateBlue'])],
 
     'DBpedia:Place':[('area total', ['dbpedia-owl:areaTotal']),
                      ('percentage of area water', ['dbpedia-owl:percentageOfAreaWater']),
@@ -54,7 +62,17 @@ ATTRIBUTES = {
 
     'DBpedia:Work':[('genre', ['dbpedia-owl:genre', 'rdfs:label'])],
 
-    'DBpedia:Film':[('starring', ['dbpedia-owl:starring', 'rdfs:label']),
+    'DBpedia:Book':[('author', ['dbpedia-owl:author', 'rdfs:label']),
+                    ('country', ['dbpprop:country']),
+                    ('illustrator', ['dbpprop:illustrator']),
+                    ('publisher', ['dbpedia-owl:publisher', 'rdfs:label'])]
+
+    'DBpedia:Film':[('creator', ['dbpprop:creator', 'rdfs:label']),
+                    ('writer', ['dbpedia-owl:writer', 'rdfs:label']),
+                    ('language', ['dbpedia-owl:language', 'rdfs:label']),
+                    ('country', ['dbpedia-owl:country', 'rdfs:label']),
+                    ('author', ['dbpedia-owl:author', 'rdfs:label']),
+                    ('starring', ['dbpedia-owl:starring', 'rdfs:label']),
                     ('cinematography', ['dbpedia-owl:cinematography', 'rdfs:label']),
                     ('director', ['dbpedia-owl:director', 'rdfs:label']),
                     ('distributor', ['dbpedia-owl:distributor', 'rdfs:label']),
