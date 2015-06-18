@@ -38,7 +38,7 @@
                     
                     if (i == {{resource.offset}}) {
                         newText += "<a href='#' class='tooltip'> {{resource.surfaceForm}} <span>";
-                        newText += "<strong>{{resource.attributeValues.label}}</strong><br/>";
+                        newText += "<h2>{{resource.attributeValues.label}}</h2><br/>";
                         
                         var value;
                         var limit;
@@ -47,7 +47,9 @@
                            value = "{{ value }}";
                            limit = Math.min(value.length, 500);
                           
-                           newText += "<ins>{{ name.title }}</ins>:" + value.substr(0,limit) + ((limit==500)?("<i> (...)</i>"):("")) + "<br />";
+                           {% if name != "label" %}
+                              newText += "<b>{{ name.title }}</b>: " + value.substr(0,limit) + ((limit==500)?("<i> (...)</i>"):("")) + "<br />";
+                           {% endif %}
                           
                         {% endfor %}
                         
