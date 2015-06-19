@@ -4,10 +4,10 @@ ATTRIBUTES = {
                  ('website', ['foaf:homepage'])],
 
     'DBpedia:Agent':[('title', ['dbpprop:title']),
-                    ('description', ['dc:description']),
-                    ('occupation', ['dbpprop:occupation']),
-                    ('profession', ['dbpprop:profession']),
-                    ('partner', ['dbpedia-owl:partner', 'rdfs:label'])],
+                     ('description', ['dc:description']),
+                     ('occupation', ['dbpprop:occupation']),
+                     ('profession', ['dbpprop:profession']),
+                     ('partner', ['dbpedia-owl:partner', 'rdfs:label'])],
 
     'DBpedia:Person':[('birth name', ['dbpprop:birthName']),
                       ('birth date', ['dbpedia-owl:birthDate']),
