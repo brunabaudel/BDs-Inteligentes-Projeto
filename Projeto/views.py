@@ -10,7 +10,7 @@ import json
 
 from dbpedia_sparql_endpoint import DBpediaSPARQLEndpoint
 
-SPOTLIGHT_URL = 'http://spotlight.dbpedia.org/rest/annotate'
+SPOTLIGHT_URL = 'http://spotlight.sztaki.hu:2222/rest/annotate'
 SPOTLIGHT_CONFIDENCE = 0.5
 
 def index(request):
